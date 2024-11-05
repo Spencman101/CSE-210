@@ -7,19 +7,29 @@ class Program
     {
         Console.WriteLine("What percentage grade did you recieve for your course? ");
         int score = int.Parse(Console.ReadLine());
-        
+
+        string letter = "";        
         if (score >= 90)
-            string letter = "A"
-            // Console.WriteLine("The grade you recieved was an A.");
+        {
+            letter = "A";
+        }
         else if (score >= 80)
-            Console.WriteLine("The grade you recieved was an B.");
+        {
+            letter = "B";
+        }
         else if (score >= 70)
-            Console.WriteLine("The grade you recieved was an C.");
+        {
+            letter = "C";
+        }
         else if (score >= 60)
-            Console.WriteLine("The grade you recieved was an D.");
+        {
+            letter = "D";
+        }
         else
-            Console.WriteLine("The grade you recieved was an F.");
-        Console.WriteLine($"The grade you recieved was an {letter}");
+        {
+            letter = "F";
+        }
+        Console.WriteLine($"The grade you recieved was an {letter}");    
 
         if (score >= 70)
             Console.WriteLine("Congratulations, you passed the class!");

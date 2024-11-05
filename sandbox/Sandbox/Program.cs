@@ -14,8 +14,14 @@ class Program
     static void Main(string[] args)
     {
 
-        int total = AddNumbers(20, 30);
-        Console.WriteLine(total);
+        // int total = AddNumbers(20, 30);
+        // Console.WriteLine(total);
+        // int x = 10;
+        // int y = x++;
+        // Console.WriteLine($"{y}, {x}");
+        // There is a difference between the pluses before or after a variable in some instances.
+        // int z = ++y;
+        // Console.WriteLine($"{z}, {y}");
 
         // Console.WriteLine("Input your age: "); 
         // Dont want to do this, as cursor is on the next line
