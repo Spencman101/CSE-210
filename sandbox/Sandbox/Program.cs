@@ -1,87 +1,71 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Media;
 
 class Program
 {
-    // In C# every program needs an entry point, void is the return type of the function (void = none), Static means that the function can be called without an objects assosiation and Nonstatic, Public is repository permissions
-    static int AddNumbers(int n1, int n2)
+    class Circle
+    {
+        private double radius;
+
+        public Circle(double radius)
         {
-            int total = n1 + n2;
-            int total2 = n1 * n2;
-            // Only 1 variable can be returned in C#
-            return total;
+            // Console.WriteLine("In the constructor");
+            this.radius = radius;
         }
+        
+        public double GetArea()
+        {
+            return Math.PI * radius * radius;
+        }
+        public double GetDiameter()
+        {
+            return 2 * radius;
+        }
+        public double GetCircumference()
+        {
+            return Math.PI * 2 * radius;
+        }
+        public double GetRadius()
+        {
+            return radius;
+        }
+        public void SetRadius(double radius)
+        {
+            this.radius = radius;
+        }
+        public void Display()
+        {
+            Console.WriteLine($"Area is: {GetArea()}");
+            Console.WriteLine($"Radius is: {GetRadius()}");
+            Console.WriteLine($"Diameter is: {GetDiameter()}");
+            Console.WriteLine($"Radius is: {GetRadius()}");
+        }
+    }
+
     static void Main(string[] args)
     {
 
-        // int total = AddNumbers(20, 30);
-        // Console.WriteLine(total);
-        // int x = 10;
-        // int y = x++;
-        // Console.WriteLine($"{y}, {x}");
-        // There is a difference between the pluses before or after a variable in some instances.
-        // int z = ++y;
-        // Console.WriteLine($"{z}, {y}");
+        // Console.WriteLine("Bonjour mes amis, comment ca va?");
 
-        // Console.WriteLine("Input your age: "); 
-        // Dont want to do this, as cursor is on the next line
-        // Console.Write("Input your age: "); 
-        // Console.Write puts the cursor on the same line as it should
-        // Console.Read goes one character at a time
+        int x = 10;
+        // First is the class/datatype, then is the variable name/object, new is a keyword to create a new version of the object, then lastly is the constructor caller/type of object.
+        Circle MyCircle = new Circle(x);
+        Circle MyCircle2 = new Circle(x + 10);
         
-        // string userInput = Console.ReadLine();
-        // int age = int.Parse(userInput);
+        MyCircle.Display();
+        MyCircle.SetRadius(x + 100);
+        MyCircle.Display();
 
-        // int age = int.Parse(Console.ReadLine());
-        // Variable types must be declared, they cannot change from their type in C#
-        // Prase takes a string and turns it into an integer
+        // Does not work because Radius is private
+        // MyCircle.radius = 10;
 
-        // Console.WriteLine($"Your age is: {age}");
-        // Console.WriteLine("Hello Sandbox World!");
+        // Console.WriteLine(MyCircle.GetArea());
+        // Console.WriteLine(MyCircle2.GetArea());
 
-        // int x = 10;
-
-        // if (x > 15)
-        // {
-        //     Console.WriteLine("Hey Bob");
-        // }
-
-        // 11/4 In-Class
-        // First part is variable declaration and happens only once, Next is loop condition (conditional) after this it executes the loop, and last is done at the end of the loop and it checks the conditional to see if the loop will run again.
-        // for(int i = 0; i < 10; i++)
-        // {
-        //     Console.WriteLine(i);
-        // }
-
-        // int age = -1;
-
-        // while (age < 0 || age > 125)
-        // {
-        //     Console.Write("Please enter your age: (0-125): ");
-        //     age = int.Parse(Console.ReadLine());
-        //     Console.WriteLine($"Your age is: {age}");
-        // }
-
-        // Must be declared before do while loop as it would only exist in the loop and couldn't carry out to while loop as it is outside the code block.
-        // int age;
-        // Do while loops are garunteed to be executed once, so you dont need a entrance strategy (Dont Need age = 1)
-        // do
-        // {
-        //     Console.Write("Please enter your age: (0-125): ");
-        //     age = int.Parse(Console.ReadLine());
-        //     Console.WriteLine($"Your age is: {age}");
-        // }while (age < 0 || age > 125);
-
-        // List <string> myColors = new List<string>();
-
-        // myColors.Add("Red");
-        // myColors.Add("Green");
-        // myColors.Add("Blue");
-
-        // foreach(string color in myColors)
-        // {
-        //     Console.WriteLine(color);
-        // }
-
+        // Console.WriteLine(MyCircle.GetCircumference());
+        // Console.WriteLine(MyCircle.GetDiameter());
+        // Console.WriteLine(MyCircle.GetRadius());
+        
     }
 }
