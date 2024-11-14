@@ -10,11 +10,23 @@ class Journal
     {
         
     }
-    static void WriteEntriesToFile(fileName)
+    public void WriteEntriesToFile(string _fileName)
     {
-
+        using (StreamWriter outputFile = new StreamWriter(_fileName))
+        {
+            foreach(JournalEntry entry in entries)
+            {
+                outputFile.WriteLine(entry.ToString());
+            }
+        }
     }
-    static void ReadEntriesFromFile(filename)
+    public override string ToString()
+    {
+        string outputString = "";
+        outputString = $"{_date}#{_entryQuestion}#{_journalEntry}";
+        return outputString;
+    }
+    static void ReadEntriesFromFile(string filename)
     {
 
     }
