@@ -5,22 +5,27 @@ class Reference
     private string _book;
     private string _chapter;
     private string _verse;
-    private string _endVerse;
+    private int _startVerse;
+    private int _endVerse;
 
     public Reference()
     {
         _book = "";
         _chapter = "";
         _verse = "";
-        _endVerse = "";
+        _startVerse = 0;
+        _endVerse = 0;
     }
     public void Display()
     {
         Console.WriteLine($"{_book} {_chapter}, {_verse}:");    
     }
-    private static void Create_reference()
+    private void Create_reference()
     {
-        Scripture._words
+        _book = "John";
+        _chapter = "3";
+        _verse = "16";
+        _startVerse = 16;
+        _endVerse = 16;
     }
-
 }

@@ -6,7 +6,7 @@ class Program
     static void Main(string[] args)
     {
         List<Scripture> scriptures = new List<Scripture>();
-        Scripture sr = new Scripture("John", 3, 17);
+        Scripture sr = new Scripture();
     }
     private void Clear()
     {
