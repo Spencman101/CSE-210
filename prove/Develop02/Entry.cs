@@ -3,8 +3,16 @@ using System;
 class Entry
 {
     private List<string> _prompts;
-    private DateTime _date;
+    private string _date;
+    private string _entryQuestion;
+    private string _journalEntry;
 
+    public JournalEntry()
+    {
+        _date = "";
+        _entryQuestion = "";
+        _journalEntry = "";
+    }
     private void CreateEntry()
     {
 

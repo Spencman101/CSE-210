@@ -6,6 +6,7 @@ class Program
     
     static void Main(string[] args)
     {
+        Journal newJournal = new Journal();
         Console.WriteLine("Hello Develop02 World!");
         GetFileName();
         _fileName = Console.ReadLine();
@@ -20,19 +21,25 @@ class Program
             _selection = (int.Parse(Console.ReadLine()));
             if (_selection == 1)
             {
+                JournalEntry journalEntry = new JournalEntry();
+                string question = journalQuestions.NextQuestion();
+                journalEntry.CreateEntry(question);
 
+                journalEntry.Display();
+
+                newJournal.AddEndtry(journalEntry);
             }
             else if (_selection == 2)
             {
-
+                newJournal.Display();
             }
             else if (_selection == 3)
             {
-
+                string filename = GetFileName();
             }
             else
             {
-
+                break;
             }
         }
     }

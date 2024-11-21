@@ -6,9 +6,20 @@ class Journal
     private string _prompt;
     private int _wordcount;
 
+    public Journal()
+    {
+        _entries = [];
+    }
+    public void AddEndtry(JournalEntry entry)
+    {
+        _entries.Add(entry);
+    }
     static void DisplayAllEntries()
     {
-        
+        foreach (JournalEntry entry in entries)
+        {
+            Console.WriteLine(entry);
+        }
     }
     public void WriteEntriesToFile(string _fileName)
     {
@@ -28,6 +39,11 @@ class Journal
     }
     static void ReadEntriesFromFile(string filename)
     {
+        string[] lines = System.IO.File.ReadAllLines(filename);
 
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split();
+        }
     }
 }
