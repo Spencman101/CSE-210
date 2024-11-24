@@ -4,28 +4,54 @@ class Reference
 {
     private string _book;
     private string _chapter;
-    private string _verse;
     private int _startVerse;
     private int _endVerse;
 
-    public Reference()
+    public Reference(string reference)
     {
-        _book = "";
-        _chapter = "";
-        _verse = "";
-        _startVerse = 0;
-        _endVerse = 0;
+        ParseReference(reference);
     }
-    public void Display()
+    public string Display()
     {
-        Console.WriteLine($"{_book} {_chapter}, {_verse}:");    
+        if (this._endVerse != -1)
+        {
+            return _book + " " + _chapter + ":" + _startVerse + "-" + _endVerse;
+        }
+        else {
+            return _book + " " + _chapter + ":" + _startVerse;
+        }
     }
-    private void Create_reference()
+
+    // john 3:16
+    private void ParseReference(string reference)
     {
-        _book = "John";
-        _chapter = "3";
-        _verse = "16";
-        _startVerse = 16;
-        _endVerse = 16;
+        List<string> parser = reference.Split(' ').ToList<string>();
+        _book = parser[0];
+        parser = parser[1].Split(':').ToList<string>();
+        _chapter = parser[0];
+        if (parser[1].Contains('-'))
+        {
+            parser = parser[1].Split('-').ToList<string>();
+            try {
+                _startVerse = Int32.Parse(parser[0]);
+                _endVerse = Int32.Parse(parser[1]);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine($"Unable to parse dummy!");
+            }
+        }
+        else 
+        {
+            try {
+                _startVerse = Int32.Parse(parser[1]);
+                _endVerse = -1;
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine($"Unable to parse dummy!");
+            }
+        }
+
     }
 }

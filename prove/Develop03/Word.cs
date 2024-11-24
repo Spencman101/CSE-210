@@ -6,23 +6,21 @@ class Word
     private string _blank;
     private Boolean _hidden;
 
-    public Word()
+    public Word(string word)
     {
-        _word = "";
-        _blank = "_____";
+        _word = word;
+        _blank = new String('_', _word.Length);
         _hidden = false;
     }
-    private void word_selector()
-    {
-        Random wordGenerator = new Random();
-        int selected_word = wordGenerator.Next(0,Scripture._scripture);
+    public string GetWord() 
+    { 
+        if (_hidden == true)
+            return _blank;
+        return _word; 
     }
-    private void hide_word()
-    {
+    public Boolean GetHidden() { return _hidden; }
+    public void SetWord(string word) { _word = word; }
+    public void SetHidden(Boolean hidden) { _hidden = hidden; }
+    public void SetBlank(string blank) { _blank = blank; }
 
-    }
-    private void isHidden()
-    {
-
-    }
-}
+}   
