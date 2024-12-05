@@ -1,36 +1,36 @@
+using System;
+
 public class Activity 
 {
-
-    private string _name;
-
-    private string _description;
-
-    private int _duration;
-
-    public Activity(string name, string description, int duration)
+    public static void DisplaySpinner(int seconds)
     {
-        _name = name;
-        _description = description;
-        _duration = duration;
+        for (int i = 0; i < seconds * 4; i++)
+        {
+            Console.Write("|");
+            Thread.Sleep(250);
+            Console.Write("\b/");
+            Thread.Sleep(250);
+            Console.Write("\b-");
+            Thread.Sleep(250);
+            Console.Write("\b\\");
+            Thread.Sleep(250);
+            Console.Write("\b");
+        }
     }
 
-
-    public void DisplayStart()
+    public static void Countdown(int seconds)
     {
-        Console.WriteLine(_name, _description);
+        for (int i = seconds; i > 0; i--)
+        {
+            Console.Write($"{i} ");
+            Thread.Sleep(1000);
+        }
+        Console.WriteLine();
     }
 
-    public void DisplayEnd()
+    public static void Pause()
     {
-
-    }
-
-    public void Spinner()
-    {
-
-    }
-    public void Countdown()
-    {
-
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
     }
 }

@@ -1,31 +1,67 @@
-public class ListingActivity : Activity 
+using System;
+
+class ListingActivity
 {
-
-    private List<string> _positiveList;
-
-    public ListingActivity(string name, string description, int duration)
-        : base(name, description, duration)
+    private List<string> prompts = new List<string>
     {
-        name = "Listing";
-        description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
-        duration = 50;
+        "Who are people that you appreciate?",
+        "What are personal strengths of yours?",
+        "Who are people that you have helped this week?",
+        "When have you felt the Holy Ghost this month?",
+        "Who are some of your personal heroes?"
+    };
 
-        // Set other values here that are unique to the Reflecting Activity
-        _positiveList = ["Who are people that you appreciate?", "What are personal strengths of yours?", "Who are people that you have helped this week?", "When have you felt the Holy Ghost this month?", "Who are some of your personal heros?"];
+    public void Run()
+    {
+        Console.Clear();
+        Console.WriteLine("Listing Activity");
+        Console.WriteLine("This activity will help you list positive things in your life.");
+        Console.Write("Enter the duration of the activity in seconds: ");
+        int duration = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Prepare to begin...");
+        SpinnerAnimation(3);
+
+        Random random = new Random();
+        Console.WriteLine(prompts[random.Next(prompts.Count)]);
+        CountdownAnimation(5);
+
+        List<string> responses = new List<string>();
+        DateTime endTime = DateTime.Now.AddSeconds(duration);
+        while (DateTime.Now < endTime)
+        {
+            Console.Write("Enter a response: ");
+            string response = Console.ReadLine();
+            responses.Add(response);
+        }
+
+        Console.WriteLine($"You listed {responses.Count} items. Well done!");
+        SpinnerAnimation(3);
     }
 
-    public void RunListingActivity()
+    private void SpinnerAnimation(int seconds)
     {
-        
+        for (int i = 0; i < seconds * 10; i++)
+        {
+            Console.Write("/");
+            Thread.Sleep(100);
+            Console.Write("\b-");
+            Thread.Sleep(100);
+            Console.Write("\b\\");
+            Thread.Sleep(100);
+            Console.Write("\b|");
+            Thread.Sleep(100);
+            Console.Write("\b");
+        }
     }
 
-    public void DisplayPrompt()
+    private void CountdownAnimation(int seconds)
     {
-
-    }
-
-    public void UpdateList()
-    {
-
+        for (int i = seconds; i > 0; i--)
+        {
+            Console.Write($"{i} ");
+            Thread.Sleep(1000);
+        }
+        Console.WriteLine();
     }
 }

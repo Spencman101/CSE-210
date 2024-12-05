@@ -1,29 +1,54 @@
-public class BreathingActivity : Activity 
+using System;
+
+class BreathingActivity
 {
-
-    public BreathingActivity(string name, string description, int duration)
-        : base(name, description, duration)
+    public void Run()
     {
-        name = "Breathing";
-        description = "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.";
-        duration = 0;
+        Console.Clear();
+        Console.WriteLine("Breathing Activity");
+        Console.WriteLine("This activity will help you relax by pacing your breathing.");
+        Console.Write("Enter the duration of the activity in seconds: ");
+        int duration = int.Parse(Console.ReadLine());
 
-        // Set other values here that are unique to the Breathing Activity
+        Console.WriteLine("Prepare to begin...");
+        SpinnerAnimation(3);
+
+        DateTime endTime = DateTime.Now.AddSeconds(duration);
+        while (DateTime.Now < endTime)
+        {
+            Console.WriteLine("Breathe in...");
+            CountdownAnimation(4);
+            Console.WriteLine("Breathe out...");
+            CountdownAnimation(4);
+        }
+
+        Console.WriteLine("Well done! You have completed the Breathing Activity.");
+        SpinnerAnimation(3);
     }
 
-    public void RunBreathingActivity()
+    private void SpinnerAnimation(int seconds)
     {
-        DisplayStart();
-
+        for (int i = 0; i < seconds * 10; i++)
+        {
+            Console.Write("/");
+            Thread.Sleep(100);
+            Console.Write("\b-");
+            Thread.Sleep(100);
+            Console.Write("\b\\");
+            Thread.Sleep(100);
+            Console.Write("\b|");
+            Thread.Sleep(100);
+            Console.Write("\b");
+        }
     }
 
-    public void DisplayPrompt()
+    private void CountdownAnimation(int seconds)
     {
-
-    }
-
-    public void BreathingCountdown()
-    {
-
+        for (int i = seconds; i > 0; i--)
+        {
+            Console.Write($"{i} ");
+            Thread.Sleep(1000);
+        }
+        Console.WriteLine();
     }
 }
