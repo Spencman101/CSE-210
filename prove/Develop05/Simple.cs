@@ -1,7 +1,23 @@
 using System;
 
-abstract class Program
+abstract class Simple : Goal
 {
 
-    points
+    private int points;
+
+    private string name;
+
+    private Boolean complete;
+
+    private string task;
+
+    private Boolean IsComplete()
+    {
+
+    }
+
+    private abstract void RecordEvent()
+    {
+
+    }
 }
