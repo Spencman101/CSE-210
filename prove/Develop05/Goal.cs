@@ -1,30 +1,17 @@
-using System;
-
 public abstract class Goal
 {
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public int Points { get; set; }
 
-    private int _points;
-    
-    private string _name;
-
-    private string _task;
-
-    private Boolean _complete;
-
-    private void IsComplete()
+    public Goal(string name, string description, int points)
     {
-
+        Name = name;
+        Description = description;
+        Points = points;
     }
+
+    public virtual string DisplayStatus() => $"{Name} - {Description}";
 
     public abstract int RecordEvent();
-
-    private virtual void Display()
-    {
-
-    }
-
-    private virtual void Create()
-    {
-
-    }
 }

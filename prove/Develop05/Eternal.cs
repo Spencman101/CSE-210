@@ -1,23 +1,15 @@
-using System;
-
-abstract class Eternal : Goal
+public class EternalGoal : Goal
 {
+    public EternalGoal(string name, string description, int points)
+        : base(name, description, points) { }
 
-    private int points;
-
-    private string name;
-
-    private Boolean complete;
-
-    private string task;
-
-    private Boolean IsComplete()
+    public override string DisplayStatus()
     {
-
+        return $"[∞] {Name} - {Description}";
     }
 
-    private abstract void RecordEvent()
+    public override int RecordEvent()
     {
-
+        return Points;
     }
 }

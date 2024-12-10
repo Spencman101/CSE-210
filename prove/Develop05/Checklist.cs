@@ -1,38 +1,29 @@
-using System;
-
-abstract class Checklist : Goal
+public class ChecklistGoal : Goal
 {
+    private int _timesCompleted;
+    private int _requiredTimes;
+    private int _bonusPoints;
 
-    private int points;
-
-    private string name;
-
-    private Boolean complete;
-
-    private string task;
-
-    private int CompletetionPoints;
-
-    private int ChecklistNum;
-
-
-    private Boolean IsComplete()
+    public ChecklistGoal(string name, string description, int points, int requiredTimes, int bonusPoints)
+        : base(name, description, points)
     {
-
+        _timesCompleted = 0;
+        _requiredTimes = requiredTimes;
+        _bonusPoints = bonusPoints;
     }
 
-    private abstract void RecordEvent()
+    public override string DisplayStatus()
     {
-
+        return $"[{_timesCompleted}/{_requiredTimes}] {Name} - {Description}";
     }
 
-    private virtual void Display()
+    public override int RecordEvent()
     {
-
-    }
-
-    private virtual void Create()
-    {
-        
+        _timesCompleted++;
+        if (_timesCompleted == _requiredTimes)
+        {
+            return Points + _bonusPoints;
+        }
+        return Points;
     }
 }

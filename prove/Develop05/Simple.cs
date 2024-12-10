@@ -1,23 +1,25 @@
-using System;
-
-abstract class Simple : Goal
+public class SimpleGoal : Goal
 {
+    private bool _isComplete;
 
-    private int points;
-
-    private string name;
-
-    private Boolean complete;
-
-    private string task;
-
-    private Boolean IsComplete()
+    public SimpleGoal(string name, string description, int points)
+        : base(name, description, points)
     {
-
+        _isComplete = false;
     }
 
-    private abstract void RecordEvent()
+    public override string DisplayStatus()
     {
+        return $"[{(_isComplete ? "X" : " ")}] {Name} - {Description}";
+    }
 
+    public override int RecordEvent()
+    {
+        if (!_isComplete)
+        {
+            _isComplete = true;
+            return Points;
+        }
+        return 0;
     }
 }
