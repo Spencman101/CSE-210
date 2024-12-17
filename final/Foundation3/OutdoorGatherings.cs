@@ -1,41 +1,27 @@
 using System;
 
-public class OutdoorGatherings
+public class OutdoorGatherings : Event
 {
 
     private string _weather;
-    private string _eventTitle;
 
-    private string _description;
+    public OutdoorGatherings(string eventTitle, string description, string date, string time, Address address, string weather)
+        : base(eventTitle, description, date, time, address)
+        {
+            _weather = weather;
+        }
 
-    private string _date;
-
-    private string _time;
-
-    private Address _address;
-
-    public void DisplayEvent()
+    public override void FullDetails()
     {
+        base.FullDetails();
 
+        Console.WriteLine(_weather);
     }
 
-    public void DisplayClearEvent()
+    public override void ShortDescription()
     {
+        Console.WriteLine("Outdoor Gathering");
         
-    }
-
-    public string GetFullDetails()
-    {
-    
-    }
-
-    public string GetStandardDetails()
-    {
-        
-    }
-
-    public string GetShortDetails()
-    {
-        
+        base.ShortDescription();
     }
 }

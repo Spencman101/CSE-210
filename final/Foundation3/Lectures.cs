@@ -1,44 +1,30 @@
 using System;
 
-public class Lectures
+public class Lectures : Event
 {
 
     private string _speaker;
 
     private int _capacity;
 
-    private string _eventTitle;
-
-    private string _description;
-
-    private string _date;
-
-    private string _time;
-
-    private Address _address;
-
-    public void DisplayEvent()
+    public Lectures(string eventTitle, string description, string date, string time, Address address, string speaker, int capacity)
+        : base(eventTitle, description, date, time, address)
     {
-
+        _speaker = speaker;
+        _capacity = capacity;
     }
 
-    public void DisplayClearEvent()
+    public override void FullDetails()
     {
+        base.FullDetails();
+
+        Console.WriteLine($"{_speaker}\nCapacity: {_capacity}");
+    }
+
+    public override void ShortDescription()
+    {
+        Console.WriteLine("Lecture");
         
-    }
-
-    public string GetFullDetails()
-    {
-    
-    }
-
-    public string GetStandardDetails()
-    {
-        
-    }
-
-    public string GetShortDetails()
-    {
-
+        base.ShortDescription();
     }
 }

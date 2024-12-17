@@ -1,41 +1,30 @@
 using System;
 
-public class Receptions
+public class Receptions : Event
 {
 
     private bool RSVP;
-    private string _eventTitle;
 
-    private string _description;
-
-    private string _date;
-
-    private string _time;
-
-    private Address _address;
-
-    public void DisplayEvent()
+    public Receptions(string eventTitle, string description, string date, string time, Address address, bool rsvp)
+        : base(eventTitle, description, date, time, address)
     {
-
+        RSVP = rsvp;
     }
-
-    public void DisplayClearEvent()
-    {
-        
-    }
-
-    public string GetFullDetails()
-    {
     
+    public override void FullDetails()
+    {
+        base.FullDetails();
+
+        if (RSVP)
+            Console.WriteLine("RSVP Needed.");
+        else
+            Console.WriteLine("RSVP Not Needed.");
     }
 
-    public string GetStandardDetails()
+    public override void ShortDescription()
     {
+        Console.WriteLine("Reception");
         
-    }
-
-    public string GetShortDetails()
-    {
-        
+        base.ShortDescription();
     }
 }

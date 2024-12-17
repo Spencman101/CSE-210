@@ -1,6 +1,6 @@
 using System;
 
-class Address
+public class Address
 {
     private string _streetAddress;
     private string _city;
